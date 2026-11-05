@@ -1,10 +1,20 @@
 const app = require('./app')
-const port = 3000
+const connectDB = require('./config/db.js')
+const port = process.env.PORT || 3000
 
-app.get('/api/v1/health', (req, res) => {
-    res.status(200).json({ success: "your entered in testing world" })
-})
 
-app.listen(port, () => {
-    console.log(`Server is successfully running on http://localhost:${port} `)
-})
+const startServer = async () => {
+    try {
+        await connectDB()
+        app.listen(port, () => {
+            console.log(`Server is successfully running on http://localhost:${port} `)
+        })
+    }
+    catch (error) {
+        console.error('Server startup failed:', error.message);
+        process.exit(1);
+    }
+   
+
+}
+ startServer()
