@@ -1,5 +1,5 @@
-const app = require('./app')
-const connectDB = require('./config/db.js')
+const app = require('./src/app.js')
+const connectDB = require('./src/config/db.js')
 const port = process.env.PORT || 3000
 
 

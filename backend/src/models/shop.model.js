@@ -3,7 +3,7 @@ const Owner = require('./owner.model')
 
 const shopSchema = new mongoose.Schema({
     shopName: { type: String, required: true, trim: true },
-    ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Owner', required: true },
+    ownerId: { type: mongoose.Schema.Types.ObjectId, ref: 'Owner', required: true ,index:true},
     phone: { type: String },
     slug: { type: String ,unique:true},
     tagline: { type: String },
